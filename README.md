@@ -17,7 +17,6 @@ A pixel-perfect, responsive static landing page built for research analysts to s
 infotech-wizard-landing-page/
 ├── assets/
 │   ├── analytics-illustration.svg     # Compliance analytics dashboard illustration
-│   ├── hero-illustration-left.svg     # Reference design asset for hero copy/checklist
 │   ├── hero-illustration-right.svg    # Main hero illustration with rating & trust badges
 │   └── logo.svg                       # Infotech Wizard brand logo
 ├── index.html                         # Semantic HTML5 document

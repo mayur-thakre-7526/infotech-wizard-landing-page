@@ -813,11 +813,11 @@ button {
     display: flex;
   }
 
-  /* Tablet Header Actions: Contact Us + Hamburger */
+  /* Tablet Header Actions: Contact Us + Hamburger (Figma Node #41:5548 gap: 24px) */
   .header-actions {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 24px;
   }
 
   .btn-header {
