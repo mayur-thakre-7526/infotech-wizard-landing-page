@@ -19,7 +19,7 @@
   --color-body: #555567;
   --color-white: #FFFFFF;
   --color-bg-light: #F8FAFC;
-  --color-bg-page: #FFFFFF;
+  --color-bg-page: #FAFBFF;
 
   /* Borders & Shadows */
   --color-border: #E8EAFA;
@@ -186,7 +186,22 @@ button {
 .btn-header {
   height: 46px;
   padding: 14px 22px;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  gap: 10px;
+  border-width: 1px;
+  box-shadow: none;
+}
+
+.btn-header:hover,
+.btn-header:focus-visible {
+  box-shadow: none;
+}
+
+.btn-header-icon {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
 }
 
 .btn-hero {
@@ -201,15 +216,16 @@ button {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
   z-index: 100;
   border-bottom: none;
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .site-header.scrolled {
+  background-color: rgba(255, 255, 255, 0.98);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
@@ -252,23 +268,13 @@ button {
 
 .nav-link::after {
   content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background-color: var(--color-primary);
-  transition: width 0.25s ease;
+  display: none;
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--color-primary);
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 100%;
+  font-weight: 500;
 }
 
 .header-actions {
@@ -428,7 +434,7 @@ button {
    -------------------------------------------------------------------------- */
 .hero-section {
   padding-top: 48px;
-  padding-bottom: 80px;
+  padding-bottom: 65px;
   overflow: hidden;
   background-color: var(--color-bg-page);
 }
@@ -437,12 +443,12 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 48px;
+  gap: 0px;
 }
 
 .hero-content {
-  flex: 1 1 54%;
-  max-width: 650px;
+  flex: 0 1 606px;
+  max-width: 606px;
 }
 
 .hero-title {
@@ -490,8 +496,8 @@ button {
 .hero-checklist {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin-bottom: 40px;
+  gap: 6px;
+  margin-bottom: 26px;
 }
 
 .checklist-item {
@@ -574,7 +580,8 @@ button {
 
 /* Hero Illustration Column */
 .hero-visual {
-  flex: 1 1 46%;
+  flex: 0 1 739.13px;
+  max-width: 739.13px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -583,7 +590,12 @@ button {
 .illustration-wrapper {
   position: relative;
   width: 100%;
-  max-width: 660px;
+  max-width: 739.13px;
+}
+
+.illustration-wrapper picture {
+  display: block;
+  width: 100%;
 }
 
 .hero-illustration-img {
@@ -596,6 +608,51 @@ button {
 
 .hero-illustration-img:hover {
   transform: translateY(-4px);
+}
+
+.hero-chevrons-mobile {
+  display: none;
+}
+
+/* Exact Desktop 1440px Canvas Match */
+@media (min-width: 1440px) {
+  .hero-container {
+    max-width: 1440px;
+    padding-left: 72px;
+    padding-right: 23px;
+  }
+
+  .hero-content {
+    flex: 0 0 606px;
+  }
+
+  .hero-visual {
+    flex: 0 0 739.13px;
+  }
+}
+
+/* Fluid Laptop Scaling (1026px - 1439px) */
+@media (max-width: 1439px) and (min-width: 1026px) {
+  .hero-container {
+    max-width: 1400px;
+    padding-left: 32px;
+    padding-right: 32px;
+    gap: 20px;
+  }
+
+  .hero-content {
+    flex: 1 1 500px;
+    max-width: 606px;
+  }
+
+  .hero-visual {
+    flex: 1 1 600px;
+    max-width: 739.13px;
+  }
+
+  .illustration-wrapper {
+    max-width: 739.13px;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -631,10 +688,10 @@ button {
 .second-section-icon,
 .compliance-arrow-desktop {
   position: absolute;
-  left: 492px;
-  top: 65px;
-  width: 132.23px;
-  height: 135.07px;
+  left: 490px;
+  top: 80px;
+  width: 35px;
+  height: 129px;
   z-index: 1;
   pointer-events: none;
   display: block;
@@ -784,6 +841,16 @@ button {
     padding-left: 32px;
     padding-right: 32px;
   }
+
+  /* Batch 1: Responsive vertical arrow positioning without text overlap */
+  .compliance-arrow-desktop {
+    display: block;
+    left: auto;
+    right: calc(50% - 4px);
+    top: 82px;
+    width: 25px;
+    height: 93px;
+  }
 }
 
 
@@ -811,6 +878,31 @@ button {
 
   .hamburger-btn {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 34px;
+    height: 34px;
+    min-width: 34px;
+    min-height: 34px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    background-color: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    cursor: pointer;
+  }
+
+  .hamburger-btn:hover,
+  .hamburger-btn:focus,
+  .hamburger-btn:active {
+    background: transparent;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
   }
 
   /* Tablet Header Actions: Contact Us + Hamburger (Figma Node #41:5548 gap: 24px) */
@@ -833,11 +925,12 @@ button {
   .hero-container {
     flex-direction: column;
     text-align: center;
-    gap: 48px;
+    gap: 24px;
   }
 
   .hero-content {
-    max-width: 700px;
+    width: 100%;
+    max-width: 636px;
     margin: 0 auto;
   }
 
@@ -873,9 +966,14 @@ button {
   }
 
   .hero-visual {
+    flex: none;
     width: 100%;
-    max-width: 600px;
+    max-width: 636px;
     margin: 0 auto;
+  }
+
+  .illustration-wrapper {
+    max-width: 636px;
   }
 
   /* Second Section: Stacked Header, Adjusted Grid */
@@ -906,10 +1004,11 @@ button {
 
   .compliance-arrow-visual {
     display: block;
-    left: 481px;
+    left: auto;
+    right: 15px;
     top: 5px;
-    width: 132.23px;
-    height: 135.07px;
+    width: 35px;
+    height: 129px;
   }
 
   .compliance-chevrons-desktop {
@@ -956,6 +1055,31 @@ button {
 }
 
 /* --------------------------------------------------------------------------
+   Tablet Hero CTA Gap Fix: 768px through 1025px (Figma Node #41:5406 gap: 16px)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 768px) and (max-width: 1025px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .hero-content {
+    flex: none;
+    width: 100%;
+    max-width: 636px;
+    margin: 0 auto;
+  }
+
+  .hero-visual {
+    flex: none;
+    width: 100%;
+    max-width: 636px;
+    margin: 0 auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
    MOBILE BREAKPOINT (max-width: 767px, 375px reference down to 320px)
    -------------------------------------------------------------------------- */
 @media screen and (max-width: 767px) {
@@ -977,10 +1101,14 @@ button {
   .site-header {
     border-bottom: none;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.11);
+    background-color: #FFFFFF;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .site-header.scrolled {
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.11);
+    background-color: rgba(255, 255, 255, 0.98);
   }
 
   .header-container {
@@ -1050,14 +1178,17 @@ button {
   }
 
   .hero-container {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 12.5px;
+    padding-right: 12.5px;
     text-align: left;
     gap: 36px;
   }
 
   .hero-content {
     width: 100%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .hero-title {
@@ -1085,8 +1216,8 @@ button {
     margin-left: auto;
     margin-right: auto;
     align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 32px;
+    gap: 6px;
+    margin-bottom: 26px;
   }
 
   .checklist-item {
@@ -1115,8 +1246,28 @@ button {
   }
 
   .hero-visual {
+    flex: none;
     width: 100%;
-    max-width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+  .illustration-wrapper {
+    max-width: 350px;
+  }
+
+  .hero-chevrons-mobile {
+    display: block;
+    width: 85px;
+    height: 21.15px;
+    margin-left: 13px;
+    margin-bottom: 19.85px;
+  }
+
+  .hero-chevrons-img {
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   /* Second Section Mobile */
@@ -1139,10 +1290,10 @@ button {
   .compliance-arrow-visual {
     display: block;
     left: auto;
-    right: -15px;
-    top: 0px;
-    width: 95.19px;
-    height: 97.23px;
+    right: 15px;
+    top: -15px;
+    width: 25px;
+    height: 93px;
   }
 
   .compliance-chevrons-desktop {
@@ -1218,5 +1369,34 @@ button {
 
   .brand-logo {
     height: 32px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Hero CTA-to-Illustration Spacing Fix: Exactly 767px
+   (Separate mobile breakpoint adjustment, preserving <=766px mobile gap)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 767px) and (max-width: 767px) {
+  .hero-container {
+    gap: 16px;
+  }
+
+  .hero-content {
+    flex: none;
+  }
+}
+
+
+/* --------------------------------------------------------------------------
+   Hero CTA-to-Illustration Spacing Fix: Exactly 767px
+   (Separate mobile breakpoint adjustment, preserving <=766px mobile gap)
+   -------------------------------------------------------------------------- */
+@media screen and (min-width: 767px) and (max-width: 767px) {
+  .hero-container {
+    gap: 16px;
+  }
+
+  .hero-content {
+    flex: none;
   }
 }

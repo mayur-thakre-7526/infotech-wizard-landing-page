@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Smooth Active Nav Link Switching on Scroll (Intersection Observer)
   // -------------------------------------------------------------------------
   const sections = document.querySelectorAll('section[id]');
-  
+
   if ('IntersectionObserver' in window && sections.length > 0) {
     const observerOptions = {
       root: null,
@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           const currentId = entry.target.getAttribute('id');
-          
+
           desktopNavLinks.forEach(link => {
             if (link.getAttribute('href') === `#${currentId}`) {
               link.classList.add('active');
